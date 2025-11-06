@@ -1,0 +1,12 @@
+﻿wwwroot/**
+umbraco/**
+node_modules/**
+bin/**
+obj/**
+
+appsettings*.json
+*.config.js
+*.schema.json
+
+package-lock.json
+.git/**

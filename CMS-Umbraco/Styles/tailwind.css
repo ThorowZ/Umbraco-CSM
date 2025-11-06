@@ -1,0 +1,6 @@
+﻿@import "tailwindcss";
+
+@source "../Views/**/*.cshtml";
+@source "../Views/Partials/**/*.cshtml";
+@source "../App_Plugins/**/*.{html,js,cshtml,vue,ts,tsx,jsx}";
+@source "../wwwroot/js/**/*.{js,ts,tsx,jsx}";

@@ -1,0 +1,23 @@
+{
+  "name": "cms-umbraco",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.16"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.38.0",
+    "globals": "^16.4.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.16"
+  },
+  "scripts": {
+    "dev:css": "tailwindcss -i ./Styles/tailwind.css -o ./wwwroot/css/site.css --watch",
+    "build:css": "tailwindcss -i ./Styles/tailwind.css -o ./wwwroot/css/site.css --minify"
+  }
+}

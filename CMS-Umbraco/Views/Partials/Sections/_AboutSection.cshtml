@@ -1,0 +1,38 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<HomePage>
+
+<section class="py-[4rem] flex flex-row">
+	<div class="container mx-auto px-4 relative z-10 w-[680px]">
+		<div class="flex flex-col gap-2">
+			<div>
+			<p class="text-[#D9C3A9] font-bold">@Model.AboutLabel</p>
+			</div>
+
+			<h2 class="text-[#4F5955] text-[40px] font-bold">@Model.AboutTitle</h2>
+			<h3 class="text-[#535656] text-[20px] font-light">@Model.AboutSubTitle</h3>
+			<p class="text-[#535656] text-[14px]">@Model.AboutDescription</p>
+			@if (Model.AboutSignature != null) 
+			{
+				<img src="@Model.AboutSignature.Url()" class="w-3xs h-3xs object-cover" />
+			}
+		</div>
+	</div>
+
+	<div class="">
+		<div class="container flex flex-col">
+			<div class="bg-[#4F5955] flex items-center justify-center py-8 w-full">
+				<h2 class="text-[30px] text-[#F2EDDC] text-center">
+					Request a call back
+				</h2>
+			</div>
+			<div class="container flex flex-col">
+				<p>Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat</p>
+				<input class="border border-[#9C9EA6] " type="text" placeholder="Name" />
+				<input type="email" placeholder="Email adress"/>
+				<input type="text" placeholder="Phone"/>
+				<select></select>
+				<button class="bg-[#F2EDDC] rounded-[4px] text-[25px] font-bold text-[#4F5955] cursor-pointer">Submit</button>
+			</div>
+		</div>
+	</div>
+</section>
