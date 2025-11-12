@@ -1,19 +1,23 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<HomePage>
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.AboutSection)Model.Content;
+    var settings = Model.Settings as ContentModels.AboutSettings;
+}
 
-@* <section class="py-[4rem] flex flex-row">
+<section class="py-[4rem] flex flex-row">
 	<div class="container mx-42 px-4 relative w-[680px]">
 		<div class="flex flex-col gap-2">
 			<div>
-			<p class="text-[#D9C3A9] font-bold">@Model.AboutLabel</p>
+				<p class="text-[#D9C3A9] font-bold">@content.AboutLabel</p>
 			</div>
 
-			<h2 class="text-[#4F5955] text-[40px] font-bold">@Model.AboutTitle</h2>
-			<h3 class="text-[#535656] text-[20px] font-light">@Model.AboutSubTitle</h3>
-			<p class="text-[#535656] text-[14px]">@Model.AboutDescription</p>
-			@if (Model.AboutSignature != null) 
+			<h2 class="text-[#4F5955] text-[40px] font-bold">@content.AboutTitle</h2>
+			<h3 class="text-[#535656] text-[20px] font-light">@content.AboutSubTitle</h3>
+			<p class="text-[#535656] text-[14px]">@content.AboutDescription</p>
+			@if (content.AboutSignatureImage != null)
 			{
-				<img src="@Model.AboutSignature.Url()" class="w-3xs h-3xs object-cover" />
+				<img src="@content.AboutSignatureImage.Url()" class="w-3xs h-3xs object-cover" />
 			}
 		</div>
 	</div>
@@ -35,4 +39,4 @@
 			</div>
 		</div>
 	</div>
-</section> *@
+</section>

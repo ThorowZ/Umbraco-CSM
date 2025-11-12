@@ -6,6 +6,11 @@
 
 }
 
+@Html.GetBlockListHtml(Model.Sections)
+
+@* 
+@Html.GetBlockListHtml(Model.Blocks, "Sections")
+
 <section class="relative py-[7rem]">
 	<div class="absolute inset-0">
 		@if (Model.HeroBgImage != null)
@@ -33,10 +38,7 @@
 
 </section>
 
-@* 		@await Html.PartialAsync("Sections/_AboutSection", Model) *@
-		<partial name="Partials/Sections/_AboutSection" />
 
-
-
+ *@
 
 
