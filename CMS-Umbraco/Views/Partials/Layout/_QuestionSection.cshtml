@@ -1,34 +1,29 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.QuestionCard>;
-@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
-
-@{
-	var content = Model;
-}
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 
 <section class="py-[4rem]">
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-[1.5rem] font-bold text-[#4F5955] mb-4">
-            @content.QuestionTitle
+            Have a question?
         </h2>
 
-        <form method="post" action="/contact/submit" class="space-y-4">
+        <form method="post" action="#" class="space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input type="text" name="name"
-                       placeholder="@content.QuestionNameInput
+                       placeholder="Name"
                        class="w-full border border-[#EAEAEA] px-4 py-3" />
 
                 <input type="email" name="email"
-                       placeholder="@content.QuestionEmailInput
+                       placeholder="Email"
                        class="w-full border border-[#EAEAEA] px-4 py-3" />
             </div>
 
             <textarea name="message"
-                      placeholder="@content.QuestionTextarea
+                      placeholder="Question"
                       class="w-full border border-[#EAEAEA] px-4 py-3 min-h-[180px]"></textarea>
 
-            <button type="submit"
+            <button href="#" type="submit"
                     class="px-8 py-3 bg-[#4F5955] text-white font-semibold">
-                @content.QuestionSubmit
+                Submit
             </button>
         </form>
     </div>

@@ -480,3 +480,5 @@ umbraco-package-schema.json
 
 # Media files
 /wwwroot/media/
+/CMS-Umbraco/appsettings.json
+/CMS-Umbraco/appsettings.Development.json
