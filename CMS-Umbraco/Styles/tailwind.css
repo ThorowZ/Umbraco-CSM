@@ -4,3 +4,7 @@
 @source "../Views/Partials/**/*.cshtml";
 @source "../App_Plugins/**/*.{html,js,cshtml,vue,ts,tsx,jsx}";
 @source "../wwwroot/js/**/*.{js,ts,tsx,jsx}";
+
+.current a {
+    @apply text-[#4F5955];
+}

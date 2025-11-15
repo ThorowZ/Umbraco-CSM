@@ -1,0 +1,68 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+	var rootContent = Umbraco.ContentAtRoot();
+	var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
+	var contactAdress = siteSettings?.ContactAdress ?? "Ingen adress angiven";
+}
+
+<div class="bg-[#4F5955]">
+	<div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+		<p class="text-xs text-white">@contactAdress</p>
+
+		<div class="flex">
+
+
+			@if (siteSettings?.PlatformList != null && siteSettings.PlatformList.Any())
+			{
+				
+					@foreach (var platform in siteSettings.PlatformList)
+					{
+						if(platform.Content is SocialMediaList mediaItem)
+						{
+							switch  (mediaItem.PlatformName?.ToLower())
+							{
+								case "facebook":
+									{
+										<a href="@mediaItem.AccountPlatformUrl" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-3 text-base text-[#4F5955] border-l border-white last:border-r">
+											<i class="fa-brands fa-facebook-f"></i>
+										</a>
+										break;
+									}
+								case "twitter":
+									{
+										<a href="@mediaItem.AccountPlatformUrl" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-3 text-base text-[#4F5955] border-l border-white last:border-r">
+											<i class="fab fa-twitter"></i>
+										</a>
+										break;
+									}
+								case "youtube":
+									{
+										<a href="@mediaItem.AccountPlatformUrl" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-3 text-base text-[#4F5955] border-l border-white last:border-r">
+											<i class="fab fa-youtube"></i>
+										</a>
+										break;
+									}
+								case "linkedin":
+									{
+										<a href="@mediaItem.AccountPlatformUrl" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-3 text-base text-[#4F5955] border-l border-white last:border-r">
+											<i class="fab fa-linkedin-in"></i>
+										</a>
+										break;
+									}
+								default:
+									{
+										<!-- Unknown platform -->
+										break;
+									}
+
+							}
+
+						}
+					}
+				
+				}
+
+		</div>
+	</div>
+</div>

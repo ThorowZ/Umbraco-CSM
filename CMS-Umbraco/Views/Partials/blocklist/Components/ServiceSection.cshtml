@@ -2,10 +2,19 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 
 @{
+
     var content = (ContentModels.ServiceSection)Model.Content;
     var settings = Model.Settings as ContentModels.ServiceSettings;
 
     var sectionColor = settings?.ServiceBgColor?.Color ?? "#ffffff";
+
+    var serviceList = content.ServiceList;
+
+    var current = Umbraco.AssignedContentItem;
+    var siteRoot = current?.Root();
+
+    var servicePage = siteRoot?.Children<ServicePage>()?.FirstOrDefault();
+    var items = servicePage?.Children<ServiceDetail>()?.OrderByDescending(x => x.CreateDate).ToList() ?? [];
 }
 
 <section class="py-[4rem] bg-[#EAEAEA]">
@@ -23,17 +32,55 @@
             </div>
         </div>
 
-        <div class="mt-5 grid grid-cols-3 gap-4">
-            <div class="bg-white border-[2px] border-[#EAEAEA] w-full min-h-[350px] overflow-hidden">
-                <a href="#" class="block no-underline">
-                    <h4 class="p-[1.5rem] font-semibold text-[#4F5955]">Risk Management</h4>
-                    <img src="/Images/Risk-Management.svg" class="block w-full h-[220px] object-cover" />
-                </a>
-                <p class="text-sm p-[1.5rem]">
-                    Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non.
-                </p>
-            </div>
+        <div class="grid grid-cols-3 grid-rows-2 gap-4">
+            @if (items != null && items.Any())
+            {
+                @foreach (var item in items)
+                {
+                    <div class="grid grid-cols-1">
+                        <div class="bg-white border-[2px] border-[#EAEAEA] w-full overflow-hidden">
+                            <a href="@item.Url()" class="block no-underline">
+                                <h4 class="p-[1.5rem] font-semibold text-xl text-[#4F5955]">@item.Name</h4>
+                                @if (@item.ServiceDetailThumbnail != null)
+                                {
+
+                                    <img src="@item.ServiceDetailThumbnail.Url()" alt="@content.ServiceLabel" class="block w-full h-[220px] object-cover" />
+
+                                }
+                            </a>
+                            <div class="text-sm text-[#535656] p-[1.5rem] items-center justify-center">
+                                @Html.Raw(item.ServiceDetailExcerpt)
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No services available</p>
+            }
+            
         </div>
+
+
     </div>
 </section>
+
+        @* <div>
+            @if (serviceList != null)
+            {
+                <div class="grid grid-cols-3 grid-rows-2 gap-4">
+                    @for (var i = 0; i < serviceList.Count && i < 6; i++)
+                    {
+                        var service = serviceList[i];
+                        <div class="px-2">
+                            <partial name="Partials/Blocklist/Components/Services" model="service" />
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p>No Service Avaliable</p>
+            }
+        </div> *@

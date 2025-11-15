@@ -1,0 +1,68 @@
+﻿{
+  "name": "Onatrix",
+  "alias": "Onatrix",
+  "extensions": [
+    {
+      "type": "tiptapToolbarExtension",
+      "kind": "styleMenu",
+      "alias": "Onatrix.Tiptap.StyleMenu",
+      "name": "Onatrix Tiptap Style Menu",
+      "meta": {
+        "alias": "OnatrixStyleMenu",
+        "icon": "icon-palette",
+        "label": "Onatrix styles"
+      },
+      "items": [
+        {
+          "label": "Headings",
+          "items": [
+            {
+              "label": "Heading 2",
+              "data": { "tag": "h2" }
+            },
+            {
+              "label": "Heading 3",
+              "data": { "tag": "h3" }
+            },
+            {
+              "label": "Heading 4",
+              "data": { "tag": "h4" }
+            }
+          ]
+        },
+        {
+          "label": "Attributes",
+          "items": [
+            {
+              "label": "Classes",
+              "data": { "class": "foo" }
+            },
+            {
+              "label": "IDs",
+              "data": { "id": "bar" }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tiptapToolbarExtension",
+      "kind": "styleMenu",
+      "alias": "Onatrix.Tiptap.BrandColors",
+      "name": "Onatrix Brand Colors",
+      "meta": {
+        "alias": "onatrixBrandColors",
+        "label": "Onatrix Colors"
+      },
+      "items": [
+        {
+          "label": "Primary",
+          "data": {
+            "tag": "span",
+            "class": "text-primary"
+          }
+        }
+      ]
+    }
+  ]
+}
