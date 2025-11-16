@@ -1,0 +1,47 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+
+@{
+	var content = (ContentModels.ClientSection)Model.Content;
+
+}
+
+<section>
+    <div class="relative max-w-7xl mx-auto px-4 flex flex-col gap-8 items-center justify-center">
+        <div class="space-y-4">
+            <h2 class="text-[2.5rem] font-bold text-[#4F5955] text-center">@content.ClientTitle</h2>
+            <p class="text-[2.5rem] font-bold uppercase tracking-wide text-[#D9C3A9] text-center">
+                @content.ClientAmount
+            </p>
+            <div class="max-w-2xl">
+                <p class="text-sm text-[#535656]">
+                    @content.ClientDescription
+                </p>
+            </div>
+            @if (!string.IsNullOrWhiteSpace(content.ClientRead))
+            {
+                <div class="flex justify-center">
+                    <a href="#"
+                       class="inline-block mt-4 bg-[#4F5955] text-white font-semibold py-3 px-8 rounded-md text-center shadow-sm hover:bg-[#3f4745] transition">
+                        @content.ClientRead
+                    </a>
+                </div>
+
+            }
+        </div>
+
+        <div class="flex gap-4 justify-end">
+            
+            @if (content.ClientGlobalImage != null)
+            {
+                <img src="@content.ClientGlobalImage.Url()" alt="" class="h-full object-contain absolute top-1 -z-10" />
+            }
+
+            @if (content.ClientCrowdImage != null)
+            {
+                <img src="@content.ClientCrowdImage.Url()" alt="" class="h-full object-contain z-[999]" />
+            }
+        </div>
+    </div>
+</section>

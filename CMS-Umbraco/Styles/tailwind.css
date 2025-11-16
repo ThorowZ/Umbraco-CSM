@@ -35,6 +35,9 @@
     }
   
 }
+.signature-img {
+    @apply w-3xs  object-cover;
+}
 
 .rte-ul {
     @apply list-disc pl-6 mt-3;
