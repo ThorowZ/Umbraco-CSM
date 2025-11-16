@@ -1,0 +1,74 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.CallBackSection)Model.Content;
+}
+
+@* Tagit hjälp av ChatGpt *@
+
+<section class="relative py-[6rem]">
+    @if (content.CallBackImage != null)
+    {
+    <div class="absolute h-full w-full object-cover inset-0">
+        <img src="@content.CallBackImage.Url()"
+             alt=""
+             class="inset-0 h-full w-full object-cover opacity-60" />
+    </div>
+    }
+
+    <div class="absolute inset-0 bg-black/10"></div>
+
+    <div class="relative px-4">
+        <div class="mx-auto max-w-4xl rounded-xl bg-white px-6 py-10 shadow-lg translate-y-1/2">
+            <div class="text-center space-y-3">
+                <p class="text-xs font-semibold text-[#D9C3A9] uppercase">
+                    @content.CallBackLabel
+                </p>
+
+                <h2 class="text-2xl md:text-3xl font-bold text-[#4F5955] leading-snug">
+                    @content.CallBackTitle
+                </h2>
+
+                <p class="mx-auto max-w-2xl text-sm text-gray-500">
+                    @content.CallBackDescription
+                </p>
+            </div>
+
+            <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                    <input type="text"
+                           placeholder="Name"
+                           class="w-full rounded-full border border-gray-300 px-4 py-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4F5955]" />
+                </div>
+
+                <div>
+                    <input type="text"
+                           placeholder="Phone"
+                           class="w-full rounded-full border border-gray-300 px-4 py-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4F5955]" />
+                </div>
+
+                <div>
+                    <input type="email"
+                           placeholder="Email address"
+                           class="w-full rounded-full border border-gray-300 px-4 py-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4F5955]" />
+                </div>
+
+                <div>
+                    <select class="w-full rounded-full border border-gray-300 px-4 py-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#4F5955]">
+                        <option selected disabled>Financial consulting</option>
+                        <option>Business strategy</option>
+                        <option>Project planning</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-8 flex justify-center">
+                <button type="submit"
+                        class="rounded-full bg-[#4F5955] px-10 py-3 text-sm font-semibold text-white hover:bg-[#3B4541] transition">
+                    @content.CallBackSubmit
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
