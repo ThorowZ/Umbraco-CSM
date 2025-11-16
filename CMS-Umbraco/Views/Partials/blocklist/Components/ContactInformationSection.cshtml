@@ -1,0 +1,77 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.ContactInformationSection)Model.Content;
+    var settings = Model.Settings as ContentModels.ContactInformationSettings;
+}
+
+<section class="bg-[#F7F7F7] py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 lg:px-0 flex flex-col lg:flex-row items-center gap-10">
+
+
+        <div class="w-full lg:w-1/2 flex ">
+            @if (content.ContactInformationImage != null)
+            {
+                <div class="relative max-w-sm w-full">
+
+                    <img src="@content.ContactInformationImage.Url()"
+                         alt=""
+                         class="relative z-10 w-full h-auto object-cover rounded-3xl z-999" />
+                </div>
+            }
+        </div>
+
+        <div class="w-full lg:w-1/2 flex justify-center relative overflow-visible">
+            @if (content.ContactInformationComponent != null)
+            {
+                <img src="@content.ContactInformationComponent.Url()"
+                     alt=""
+                     class="absolute z-10 contact-component-img w-auto object-contain bottom-[-250px] right-[400px] -z-10" />
+            }
+        </div>
+
+
+        <div class="w-full lg:w-1/2">
+            <div class="space-y-4 mb-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#4F5955] leading-tight">
+                    @content.ContactInformationTitle
+                </h2>
+            </div>
+
+            @if (!string.IsNullOrWhiteSpace(content?.ContactInformationLocation))
+            {
+                <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-location-dot  mt-1 inline-flex h-9 w-9 items-center justify-center rounded-full text-[#D9C3A9] text-xs"></i>
+                    <div>
+                        <p class="font-semibold text-[#4F5955] mb-1">Office Location</p>
+                        <p>@content.ContactInformationLocation</p>
+                    </div>
+                </li>
+            }
+
+
+                @if (!string.IsNullOrWhiteSpace(content?.ContactInformationNumber))
+                {
+                    <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-phone mt-1 inline-flex h-9 w-9 items-center justify-center rounded-full text-[#D9C3A9] text-xs"></i>
+                        <div>
+                            <p class="font-semibold text-[#4F5955] mb-1">Phone number</p>
+                            <p>@content.ContactInformationNumber</p>
+                        </div>
+                    </li>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(content?.ContactInformationMail))
+                {
+                    <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-envelope mt-1 inline-flex h-9 w-9 items-center justify-center rounded-full text-[#D9C3A9] text-xs"></i>
+                        <div>
+                            <p class="font-semibold text-[#4F5955] mb-1">E-mail address</p>
+                            <p>@content.ContactInformationMail</p>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</section>

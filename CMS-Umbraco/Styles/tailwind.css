@@ -51,9 +51,17 @@
         @apply text-secondary;
     }
 
-img {
+.rte img {
     @apply w-full h-auto object-cover;
 }
 .p {
     @apply mb-3;
+}
+
+.contact-component-img {
+    @apply h-[650] w-[600] object-cover;
+}
+
+.contact-information-img {
+    @apply h-[680px] w-[485] object-cover;
 }
